@@ -1,0 +1,7 @@
+class BankAccount:
+
+    def __init__(seld, initial_amount=0):
+        self.balance = initial_amount
+        print(f"Account initialized with a starting balance of ${self.balance: .2f}")
+    
+    
