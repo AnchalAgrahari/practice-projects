@@ -21,4 +21,16 @@ class BankAccount:
             self.balance -= amount
             return f"Withdrew ${amount: .2f}. New balance is ${self.balance: .2f}"
 
-            return
+    def get_balance(self):
+        return f"current Baance: ${self.balance: .2f}"
+        
+my_account = BankAccount(100.00)
+print("-" * 25)
+
+print(my_account.deposit(50.50))
+print(my_account.withdraw(25.00))
+print(my_account.get_balance())
+print(my_account.withdraw(200.00))
+print(my_account.get_balance())
+print("-" * 25)
+
