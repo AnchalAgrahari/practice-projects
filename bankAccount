@@ -1,15 +1,28 @@
 class BankAccount:
 
-    def __init__(seld, initial_amount=0):
+    def __init__(self, initial_amount=0):
         self.balance = initial_amount
+        self.history = []
+ 
+        self._record_transaction("Initial Deposite", initial_amount)
         print(f"Account initialized with a starting balance of ${self.balance: .2f}")
-    
+
+    def _record_transacation(seld, transaction_type, amount):
+        transaction = {
+            "type" : type_str,
+            "amount" : amount,
+            "new_balance" : self.balance,
+            "time" : datetime.datatime.now().strftime("%Y-%m-%d %H:%M:%S") 
+        }
+        self.history.appent(transaction)
+
     def deposit(self, amount):
         if amount > 0:
             self.balance += amount
-            print(f"Deposited: ${amount: .2f}")
+            self._record_transacation("Deposit", amount)
+            return f"Deposited: ${amount: .2f}. New Balance is { self,balance: .2f}"
         else:
-            print("Deposit amount must be positive.")
+            return("Deposit amount must be positive: Depositive Failed")
             
     def withdraw(self, amount):
         if 0 < amount <= self.balance:
@@ -19,18 +32,37 @@ class BankAccount:
             return f"Withdrawal failed: Insufficient funds. Current balance is ${self.balance: .2f}"
         else :
             self.balance -= amount
+            self._record_transacation("Witthdraw", amount)
             return f"Withdrew ${amount: .2f}. New balance is ${self.balance: .2f}"
 
     def get_balance(self):
         return f"current Baance: ${self.balance: .2f}"
+
+    def print_history(self, n=5):
+        print(f"\n--- Last {n} Transactions ---")
+
+        transaction_to_show = self.history[-n:]
+
+        if not transaction_to_show:
+            print("No transactions found.")
+            return
+        for i, t in enumerate(transaction_to_show):
+            sign = "+" if t["type"] == "Deposit" or t["type"] == "Initial Deposit" else "-"
+            print(f"[{i+1}/{len(self.history)}] {t['time']} | {t['type'] : <18} | {sign}${t['amount']: <8.2f} | Balance after transaction: ${t['new_balance']: .2f}")
         
-my_account = BankAccount(100.00)
+        print("-" * 35)
+
+
+
+my_account = BankAccount(10000.00)
 print("-" * 25)
 
+print(my_account.deposit(550.50))
+print(my_account.withdraw(1000.00))
 print(my_account.deposit(50.50))
-print(my_account.withdraw(25.00))
-print(my_account.get_balance())
-print(my_account.withdraw(200.00))
+print(my_account.withdraw(10.500))
+print(my_account.deposit(255.0))
+print(my_account.withdraw(3000))
 print(my_account.get_balance())
 print("-" * 25)
 
