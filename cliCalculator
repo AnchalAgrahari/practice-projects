@@ -11,6 +11,70 @@ class calculator :
         return result
     
     def multi (self, a,b):
-        result = a*b
-        print(f"Multiplication {a} * {b} = {result}")
-        return result
+        try:
+            if a==0 and b==0:
+                raise ValueError("Multipication of zero with zero is not allowed.")
+            
+            result = a*b
+            print(f"Multiplication {a} * {b} = {result}")
+            return result
+        
+        except Exception as e:
+            print("Try to give different value for any Integer",e)
+
+    def div (self, a, b):
+        try: 
+            if b == 0:
+                raise ZeroDivisionError ("We can't divide by zero")
+            
+            result = a/b
+            print(f"Division {a} / {b} = {result}")
+            return result
+        
+        except Exception as e:
+            print("Try to give int b a diffrent value ",e)
+
+    def run(self):
+        print("-"*10 +" Calculator Operation Demo "+ "-"*10)
+        print("The Operations Avaliable : ADD, SUB, MULTI, DIV, EXIT")
+
+        while True:
+            operation = input("\nEnter Operations (ADD, SUB, MULTI, DIV, EXIT) : ").strip().lower()
+            
+            if operation == 'exit':
+                print("Exiting the Calculator, Goodbye!")
+                break
+
+            if operation not in ['add', 'sub', 'multi', 'div']:
+                print("Invalid Operation.")
+                continue
+
+            try:
+                num1_str = input("Enter the First number : ")
+                num2_str = input("Enter the Second number : ")
+
+                num1 = float(num1_str)
+                num2 = float(num2_str)
+
+                if operation == 'add':
+                    print(f"Result: {num1} + {num2} = {result}")
+
+                elif operation == 'sub':
+                    print(f"Result: {num1} - {num2} = {result}")
+
+                elif operation == 'multi':
+                    print(f"Result: {num1} * {num2} = {result}")
+                
+                elif operation == 'div':
+                    print(f"Result: {num1} / {num2} = {result}")
+            
+            except ValueError:
+                print("Invalid input. Please enter the valid numeric values for the numbers.")
+            except  Exception as e :
+                print(f"An unexpected error occurec: {e}")
+            
+
+
+if __name__ == '__main__':
+    calc = calculator()
+    calc.run()
