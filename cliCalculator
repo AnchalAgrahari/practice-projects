@@ -66,6 +66,7 @@ class calculator :
                     print(f"Result: {num1} * {num2} = {result}")
                 
                 elif operation == 'div':
+                    result = num1 / num2 
                     print(f"Result: {num1} / {num2} = {result}")
             
             except ValueError:
