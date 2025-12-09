@@ -57,13 +57,15 @@ class calculator :
                 num2 = float(num2_str)
 
                 if operation == 'add':
+                    result = num1 + num2
                     print(f"Result: {num1} + {num2} = {result}")
 
                 elif operation == 'sub':
+                    result = num1 - num2
                     print(f"Result: {num1} - {num2} = {result}")
 
                 elif operation == 'multi':
-                    result = num1 / num2 
+                    result = num1 * num2 
                     print(f"Result: {num1} * {num2} = {result}")
                 
                 elif operation == 'div':
