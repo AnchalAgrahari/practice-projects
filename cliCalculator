@@ -3,13 +3,12 @@ class calculator :
 
         result = a + b 
         print(f"Adding {a} + {b} = {result}")
-        return result
+        
     
     def sub ( self, a, b):
         result = a-b
         print(f"Subtracting {a} - {b} = {result}")
-        return result
-    
+       
     def multi (self, a,b):
         try:
             if a==0 and b==0:
@@ -17,7 +16,7 @@ class calculator :
             
             result = a*b
             print(f"Multiplication {a} * {b} = {result}")
-            return result
+            
         
         except Exception as e:
             print("Try to give different value for any Integer",e)
@@ -29,7 +28,7 @@ class calculator :
             
             result = a/b
             print(f"Division {a} / {b} = {result}")
-            return result
+            
         
         except Exception as e:
             print("Try to give int b a diffrent value ",e)
