@@ -67,9 +67,9 @@ class calculator :
                     result = num1 * num2 
                     print(f"Result: {num1} * {num2} = {result}")
                 
-                elif operation == 'div':
-                    result = num1 / num2 
-                    print(f"Result: {num1} / {num2} = {result}")
+                # elif operation == 'div':
+                #     result = num1 / num2 
+                #     print(f"Result: {num1} / {num2} = {result}")
             
             except ValueError:
                 print("Invalid input. Please enter the valid numeric values for the numbers.")
