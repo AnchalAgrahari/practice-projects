@@ -55,7 +55,7 @@ class BankAccount:
 
 
 my_account = BankAccount(10000.00)
-print("-" * 25)
+print("-" * 50)
 
 print(my_account.withdraw(1000.00))
 print(my_account.deposit(50.50))
@@ -63,7 +63,7 @@ print(my_account.withdraw(10.500))
 print(my_account.deposit(255.0))
 print(my_account.withdraw(3000))
 print(my_account.get_balance())
-print("-" * 25)
+print("-" * 50)
 
 my_account.print_history()
 
