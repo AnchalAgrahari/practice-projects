@@ -30,10 +30,10 @@ class BankAccount:
             return "Withdrawal failed: Amount must be positive."
         elif amount > self.balance:
             return f"Withdrawal failed: Insufficient funds. Current balance is ${self.balance: .2f}"
-        # else :
-        #     self.balance -= amount
-        #     self._record_transaction("Withdraw", amount)
-        #     return f"Withdraw ${amount: .2f}. New balance is ${self.balance: .2f}"
+        else :
+            self.balance -= amount
+            self._record_transaction("Withdraw", amount)
+            return f"Withdraw ${amount: .2f}. New balance is ${self.balance: .2f}"
 
     def get_balance(self):
         return f"current Baance: ${self.balance: .2f}"
