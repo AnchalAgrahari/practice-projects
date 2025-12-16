@@ -57,14 +57,45 @@ class BankAccount:
 my_account = BankAccount(10000.00)
 print("-" * 50)
 
-print(my_account.withdraw(1000.00))
-print(my_account.deposit(50.50))
-print(my_account.withdraw(10.500))
-print(my_account.deposit(255.0))
-print(my_account.withdraw(3000))
-print(my_account.get_balance())
-print("-" * 50)
+# print(my_account.withdraw(1000.00))
+# print(my_account.deposit(50.50))
+# print(my_account.withdraw(10.500))
+# print(my_account.deposit(255.0))
+# print(my_account.withdraw(3000))
+# print(my_account.get_balance())
+# print("-" * 50)
 
-my_account.print_history()
+# my_account.print_history()
 
-my_account.print_history(2)
+# my_account.print_history(2)
+while True:
+    print("\nChoose an option:")
+    print("1. Deposit")
+    print("2. Withdraw")
+    print("3. Check Balance")
+    print("4. Show Transaction History")
+    print("5. Exit")
+
+    choice = input("Enter your choice (1-5): ")
+
+    if choice == "1":
+        amount = float(input("Enter deposit amount: "))
+        print(my_account.deposit(amount))
+
+    elif choice == "2":
+        amount = float(input("Enter withdrawal amount: "))
+        print(my_account.withdraw(amount))
+
+    elif choice == "3":
+        print(my_account.get_balance())
+
+    elif choice == "4":
+        n = int(input("How many recent transactions to show? "))
+        my_account.print_history(n)
+
+    elif choice == "5":
+        print("Thank you for using the bank system 👋")
+        break
+
+    else:
+        print("Invalid choice. Please try again.")
