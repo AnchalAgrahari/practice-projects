@@ -94,7 +94,7 @@ while True:
         my_account.print_history(n)
 
     elif choice == "5":
-        print("Thank you for using the bank system 👋")
+        print("Thank you for using the bank system ")
         break
 
     else:
