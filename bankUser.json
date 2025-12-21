@@ -24,6 +24,11 @@
             "id": 105,
             "name": "Eva shree",
             "balance": "4000"
+        },
+        {
+            "id": 106,
+            "name": "Cookiee",
+            "balance": "2000"
         }
     ]
 }
