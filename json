@@ -6,7 +6,7 @@ def bank_user(file_name):
             {"id" : 101, "name" : "Anchal Agrahari", "balance" : "5000" },
             {"id" : 102, "name" : "Deepti Tiwari", "balance" : "8000" },
             {"id" : 103, "name" : "Nikhat Khan", "balance" : "7000" },
-            {"id" : 104, "name" : "Aadil Miraj", "balance" : "6000"},
+            {"id" : 104, "name" : "Aadil Miraj", "balance" : "6000"}
         ]
     }
     with open (file_name + ".json", "w") as f :
