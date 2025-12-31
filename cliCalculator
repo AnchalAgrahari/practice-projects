@@ -54,31 +54,31 @@ class calculator :
                 print("Invalid Operation.")
                 continue
 
-            # try:
-            #     num1_str = input("Enter the First number : ")        #num1_str
-            #     num2_str = input("Enter the Second number : ")      #num2_str
+            try:
+                num1_str = input("Enter the First number : ")        #num1_str
+                num2_str = input("Enter the Second number : ")      #num2_str
 
-            #     num1 = float(num1_str)
-            #     num2 = float(num2_str)
+                num1 = float(num1_str)
+                num2 = float(num2_str)
 
-            #     if operation == 'add':
-            #         result = self.add(num1, num2)
+                if operation == 'add':
+                    result = self.add(num1, num2)
 
-            #     elif operation == 'sub':
-            #         result = self.sub(num1, num2)
+                elif operation == 'sub':
+                    result = self.sub(num1, num2)
                     
-            #     elif operation == 'multi':
-            #         result = self.multi(num1 , num2)
+                elif operation == 'multi':
+                    result = self.multi(num1 , num2)
 
-            #     elif operation == 'div':
-            #         result = self.div(num1 , num2) 
+                elif operation == 'div':
+                    result = self.div(num1 , num2) 
 
                 
             
-            # except ValueError:
-            #     print("Invalid input. Please enter the valid numeric values for the numbers.")
-            # except  Exception as e :
-            #     print(f"An unexpected error occurec: {e}")
+            except ValueError:
+                print("Invalid input. Please enter the valid numeric values for the numbers.")
+            except  Exception as e :
+                print(f"An unexpected error occurec: {e}")
             
 
 
