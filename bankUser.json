@@ -19,6 +19,11 @@
             "id": 104,
             "name": "Aadil Miraj",
             "balance": "6000"
+        },
+        {
+            "id": 105,
+            "name": "Cookie",
+            "balance": "2000"
         }
     ]
 }
