@@ -3,31 +3,31 @@
         {
             "id": 101,
             "name": "Anchal Agrahari",
-            "balance": "5000",
+            "balance": 5000,
             "transactions": []
         },
         {
             "id": 102,
             "name": "Deepti Tiwari",
-            "balance": "8000",
+            "balance": 8000,
             "transactions": []
         },
         {
             "id": 103,
             "name": "Nikhat Khan",
-            "balance": "7000",
+            "balance": 7000,
             "transactions": []
         },
         {
             "id": 104,
             "name": "Aadil Miraj",
-            "balance": "6000",
+            "balance": 6000,
             "transactions": []
         },
         {
             "id": 105,
             "name": "Cookie",
-            "balance": "2000",
+            "balance": 2000,
             "transactions": []
         }
     ]
