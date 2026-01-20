@@ -1,6 +1,5 @@
-create table usres (
-    id serial primary key,
-    name varchar(100) not null,
-    balance int not null default '1000000'
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    balance INT NOT NULL DEFAULT 1000000
 );
-select * from usres
