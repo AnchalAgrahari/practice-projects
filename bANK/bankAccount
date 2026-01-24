@@ -1,0 +1,91 @@
+import datetime
+class BankAccount:
+
+    def __init__(self, initial_amount=0.0):
+        self.balance = float(initial_amount)
+        self.history = []
+ 
+        self._record_transaction("Initial Deposit", self.balance)
+        print(f"Account initialized with a starting balance of ${self.balance: .2f}")
+
+    def _record_transaction(self, transaction_type, amount):
+        transaction = {
+            'type' : transaction_type,
+            'amount' : amount,
+            'new_balance' : self.balance,
+            'time' : datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") 
+        }
+        self.history.append(transaction)
+
+    def deposit(self, amount):
+        if amount > 0:
+            self.balance += amount
+            self._record_transaction("Deposit", amount)
+            return f"Deposited: ${amount: .2f}. New Balance is { self.balance: .2f}"
+        else:
+            return("Deposit amount must be positive: Depositive Failed")
+            
+    def withdraw(self, amount):
+        if amount <= 0 :
+            return "Withdrawal failed: Amount must be positive."
+        elif amount > self.balance:
+            return f"Withdrawal failed: Insufficient funds. Current balance is ${self.balance: .2f}"
+        else :
+            self.balance -= amount
+            self._record_transaction("Withdraw", amount)
+            return f"Withdraw ${amount: .2f}. New balance is ${self.balance: .2f}"
+
+    def get_balance(self):
+        return f"current Baance: ${self.balance: .2f}"
+
+    def print_history(self, n=5):
+        print(f"\n--- Last {n} Transactions ---")
+
+        transaction_to_show = self.history[-n:]
+
+        if not transaction_to_show:
+            print("No transactions found.")
+            return
+        for i, t in enumerate(transaction_to_show):
+            sign = "+" if t["type"] == "Deposit" or t["type"] == "Initial Deposit" else "-"
+            print(f"[{i+1}/{len(self.history)}] {t['time']} | {t['type'] : <18} | {sign}${t['amount']: <8.2f} | Balance after transaction: ${t['new_balance']: .2f}")
+        
+        print("-" * 35)
+
+
+
+my_account = BankAccount(10000.00)
+print("-" * 50)
+
+
+while True:
+    print("\nChoose an option:")
+    print("1. Deposit")
+    print("2. Withdraw")
+    print("3. Check Balance")
+    print("4. Show Transaction History")
+    print("5. Exit")
+
+    choice = input("Enter your choice (1-5): ")
+
+    if choice == "1":
+        amount = float(input("Enter deposit amount: "))
+        print(my_account.deposit(amount))
+
+    elif choice == "2":
+        amount = float(input("Enter withdrawal amount: "))
+        print(my_account.withdraw(amount))
+
+    elif choice == "3":
+        print(my_account.get_balance())
+
+    elif choice == "4":
+        n = int(input("How many recent transactions to show? "))
+        my_account.print_history(n)
+
+    elif choice == "5":
+        print("Thank you for using the bank system ")
+        break
+
+    else:
+        print("Invalid choice. Please try again.")
