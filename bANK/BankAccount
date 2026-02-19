@@ -1,0 +1,111 @@
+import json
+import os
+
+class BankAccount:
+    """Represents a single user's bank account."""
+    
+    def __init__(self, user_id, name, balance, transactions):
+        self.user_id = user_id
+        self.name = name
+        self.balance = balance
+        self.transactions = transactions
+
+    def deposit(self, amount):
+        if amount > 0:
+            self.balance += amount
+            self.transactions.append(f"Deposited: ${amount:.2f}")
+            return True
+        return False
+
+    def withdraw(self, amount):
+        if 0 < amount <= self.balance:
+            self.balance -= amount
+            self.transactions.append(f"Withdrew: ${amount:.2f}")
+            return True
+        print("\nInsufficient funds or invalid amount.")
+        return False
+
+    def display_info(self):
+        print(f"\n--- Account Info ---")
+        print(f"ID: {self.user_id} | Owner: {self.name}")
+        print(f"Current Balance: ${self.balance:.2f}")
+        print(f"Transaction History: {self.transactions}")
+
+# --- JSON Handling Logic ---
+
+def load_all_users(filename):
+    """Loads all users from the JSON file."""
+    if not os.path.exists(filename):
+        # Create an empty list if file doesn't exist
+        return []
+    with open(filename, 'r') as file:
+        return json.load(file)
+
+def save_all_users(filename, all_users):
+    """Saves the entire list of user dictionaries back to JSON."""
+    with open(filename, 'w') as file:
+        json.dump(all_users, file, indent=4)
+
+def update_user_data(all_users, account_obj):
+    """Syncs the BankAccount object data back into the main list."""
+    for user in all_users:
+        if user['id'] == account_obj.user_id:
+            user['balance'] = account_obj.balance
+            user['transactions'] = account_obj.transactions
+            break
+
+# --- Main Program ---
+
+def main():
+    filename = 'bankUser.json'
+    all_users = load_all_users(filename)
+
+    if not all_users:
+        print("No users found in database.")
+        return
+
+    # 1. Select User
+    try:
+        search_id = int(input("Enter User ID to access account: "))
+    except ValueError:
+        print("Invalid ID format.")
+        return
+
+    user_data = next((u for u in all_users if u['id'] == search_id), None)
+
+    if user_data:
+        # 2. Create BankAccount object from JSON data
+        account = BankAccount(
+            user_data['id'], 
+            user_data['name'], 
+            user_data['balance'], 
+            user_data['transactions']
+        )
+        
+        print(f"\nWelcome back, {account.name}!")
+
+        # 3. Operations Loop
+        while True:
+            account.display_info()
+            print("\n1. Deposit\n2. Withdraw\n3. Save & Exit")
+            choice = input("Select an option: ")
+
+            if choice == '1':
+                amt = float(input("Enter deposit amount: "))
+                account.deposit(amt)
+            elif choice == '2':
+                amt = float(input("Enter withdrawal amount: "))
+                account.withdraw(amt)
+            elif choice == '3':
+                # 4. Update the list and save back to JSON
+                update_user_data(all_users, account)
+                save_all_users(filename, all_users)
+                print("Data saved. Goodbye!")
+                break
+            else:
+                print("Invalid choice.")
+    else:
+        print("User ID not found.")
+
+if __name__ == "__main__":
+    main()
