@@ -4,25 +4,25 @@ import os           #check if file exist or not(line 38)
 class BankAccount:
     """Represents a single user's bank account."""
     
-    def __init__(self, user_id, name, balance, transactions):
+    def __init__(self, user_id, name, balance, transactions):               #objects are created
         self.user_id = user_id
         self.name = name
         self.balance = balance
         self.transactions = transactions
 
     def deposit(self, amount):
-        if amount > 0:
-            self.balance += amount
-            self.transactions.append(f"Deposited: ${amount:.2f}")
-            return True
-        return False
+        if amount > 0:                  #check valid amount
+            self.balance += amount          #add money
+            self.transactions.append(f"Deposited: ${amount:.2f}")           #add transaction history
+            return True             #returns success
+        return False                #if amount is invalid
 
     def withdraw(self, amount):
-        if 0 < amount <= self.balance:
-            self.balance -= amount
-            self.transactions.append(f"Withdrew: ${amount:.2f}")
-            return True
-        print("\nInsufficient funds or invalid amount.")
+        if 0 < amount <= self.balance:              #withdraw money
+            self.balance -= amount                      #subtract money
+            self.transactions.append(f"Withdrew: ${amount:.2f}")                #historu
+            return True                 #sucess
+        print("\nInsufficient funds or invalid amount.")                    
         return False
 
     def display_info(self):
@@ -33,34 +33,34 @@ class BankAccount:
 
 # --- JSON Handling Logic ---
 
-def load_all_users(filename):
+def load_all_users(filename):               #this loads user from Json
     """Loads all users from the JSON file."""
-    if not os.path.exists(filename):
+    if not os.path.exists(filename):            #check if exists
         # Create an empty list if file doesn't exist
-        return []
+        return []                           #return empty list if not found
     with open(filename, 'r') as file:
-        return json.load(file)
+        return json.load(file)                  #convert json into python list
 
-def save_all_users(filename, all_users):
+def save_all_users(filename, all_users):                #save updated users
     """Saves the entire list of user dictionaries back to JSON."""
     with open(filename, 'w') as file:
-        json.dump(all_users, file, indent=4)
+        json.dump(all_users, file, indent=4)                    #write json into json file
 
-def update_user_data(all_users, account_obj):
+def update_user_data(all_users, account_obj):                   #syncs object back to json list
     """Syncs the BankAccount object data back into the main list."""
     for user in all_users:
-        if user['id'] == account_obj.user_id:
-            user['balance'] = account_obj.balance
-            user['transactions'] = account_obj.transactions
+        if user['id'] == account_obj.user_id:                   #find matching user
+            user['balance'] = account_obj.balance               #update balance
+            user['transactions'] = account_obj.transactions         #update transaction
             break
 
 # --- Main Program ---
 
 def main():
-    filename = 'bankUser.json'
-    all_users = load_all_users(filename)
+    filename = 'bankUser.json'          #json file name
+    all_users = load_all_users(filename)        #load users
 
-    if not all_users:
+    if not all_users:                       #if no user
         print("No users found in database.")
         return
 
