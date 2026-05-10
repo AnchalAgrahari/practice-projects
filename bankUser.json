@@ -5,6 +5,12 @@
             "name": "Anchal Agrahari",
             "balance": 5000,
             "transactions": []
+        },
+        {
+            "id": 102,
+            "name": "Shiki",
+            "balance": 6000,
+            "transaction": []
         }
     ]
 }
